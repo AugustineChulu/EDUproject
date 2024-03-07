@@ -16,13 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::view('/', 'welcome');
 
 // AUTO GENERATED ROUTES FOR LOGIN REGISTRATION AND VERYFICATION PROCESSES
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+Route::view('dashboard', 'dashboard')->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::view('profile', 'profile')
-    ->middleware(['auth'])
-    ->name('profile');
+Route::view('profile', 'profile')->middleware(['auth'])->name('profile');
 
 require __DIR__.'/auth.php';
 // ///////////////////////////////////////////////////////////////////////
+
+// Route::view('/home', 'home')->middleware(['auth'])->name('home');

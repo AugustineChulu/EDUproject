@@ -155,6 +155,7 @@ return [
     |
     */
 
+
     'providers' => ServiceProvider::defaultProviders()->merge([
         /*
          * Package Service Providers...
@@ -169,6 +170,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\VoltServiceProvider::class,
+
+        // permissions service provider from https://spatie.be/docs/laravel-permission/v6/installation-laravel
+        Spatie\Permission\PermissionServiceProvider::class,
     ])->toArray(),
 
     /*
