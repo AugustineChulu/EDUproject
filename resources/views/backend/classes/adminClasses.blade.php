@@ -1,6 +1,4 @@
-@extends('layouts.app')
-
-@section('content')
+<x-app-layout>
 
     @role('admin')
     
@@ -74,4 +72,4 @@
     </div>
 
     @endrole
-@endsection
+</x-app-layout>

@@ -28,26 +28,3 @@
     @endrole
     
 </x-app-layout>
-
-
-{{-- @extends('layouts.app')
-
-@section('content')
-
-<div class="home">
-    
-    @role('admin')
-        @include('dashboard.admin')
-    @endrole
-
-    @role('teacher')
-        @include('dashboard.teacher')
-    @endrole
-
-    @role('pupil')
-        @include('dashboard.student')
-    @endrole
-
-</div>
-
-@endsection --}}

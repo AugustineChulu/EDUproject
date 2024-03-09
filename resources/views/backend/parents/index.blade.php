@@ -1,6 +1,4 @@
-@extends('layouts.app')
-
-@section('content')
+<x-app-layout>
     <div class="roles-permissions">
         <div class="flex items-center justify-between mb-6">
             <div>
@@ -51,7 +49,7 @@
 
         @include('backend.modals.delete',['name' => 'parent'])
     </div>
-@endsection
+</x-app-layout>
 
 @push('scripts')
 <script>

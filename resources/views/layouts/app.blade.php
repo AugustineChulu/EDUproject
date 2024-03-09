@@ -59,8 +59,6 @@
                         <div id="contentWrapper" class="w-full sm:p-5 overflow-auto">
         
                             <!-- Page Content -->
-                            {{-- @yield('content') --}}
-
                             <main>
                                 {{ $slot }}
                             </main>

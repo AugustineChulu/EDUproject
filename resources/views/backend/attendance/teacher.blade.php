@@ -1,6 +1,4 @@
-@extends('layouts.app')
-
-@section('content')
+<x-app-layout>
 
     <div class="w-full block">
         <div class="flex flex-wrap sm:flex-no-wrap justify-between">
@@ -36,4 +34,4 @@
         </div>
     </div>
 
-@endsection
+</x-app-layout>

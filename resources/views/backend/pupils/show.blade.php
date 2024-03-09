@@ -1,6 +1,4 @@
-@extends('layouts.app')
-
-@section('content')
+<x-app-layout>
     <div class="roles">
 
         <div class="flex items-center justify-between mb-6">
@@ -183,4 +181,4 @@
         </div>
         
     </div>
-@endsection
+</x-app-layout>
