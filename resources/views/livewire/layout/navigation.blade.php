@@ -19,7 +19,7 @@ new class extends Component
 <nav x-data="{ open: false }" class="">
 
     <!-- Primary Navigation Menu -->
-    <div class="px-4">
+    <div>
         <div class="flex justify-end h-16">
 
             {{-- <div class="flex">
@@ -39,15 +39,30 @@ new class extends Component
                 </div>
             </div> --}}
 
-            <!-- Settings Dropdown -->
-            <div class="hidden sm:flex sm:items-center sm:ms-6">
+            <div id="navbarTitle" class="flex items-center text-white">
+                {{-- <i class="fa-solid fa-book fa-2x sm:pr-5"></i> --}}
 
-                <button wire:click="logout" class="w-full text-start">
-                    <x-dropdown-link>
-                        {{ __('Log Out') }}
-                    </x-dropdown-link>
-                </button>
-                {{-- <x-dropdown align="right" width="48">
+                <!-- Logo -->
+                <div class="shrink-0 flex items-center">
+                    <a href="{{ route('dashboard') }}" wire:navigate>
+                        <x-application-logo class="block h-9 w-auto fill-current text-red-800 dark:text-gray-200 sm:pr-2" />
+                    </a>
+                </div>
+
+                <span class="font-semibold text-sm sm:text-xl uppercase tracking-tight">{{ config('app.name', 'Laravel') }}</span>
+            </div>
+
+            <button wire:click="logout" class="text-start focus:outline-none mr-5">
+                <x-dropdown-link>
+                    {{ __('Log Out') }}
+                </x-dropdown-link>
+            </button>
+
+            <!-- Settings Dropdown -->
+            {{-- <div class="hidden sm:flex sm:items-center">
+
+                
+                <x-dropdown align="right" width="48">
 
                     <button wire:click="logout" class="w-full text-start">
                         <x-dropdown-link>
@@ -81,8 +96,8 @@ new class extends Component
 
                     </x-slot>
 
-                </x-dropdown> --}}
-            </div>
+                </x-dropdown>
+            </div> --}}
 
             <!-- Hamburger -->
             {{-- <div class="-me-2 flex items-center sm:hidden">

@@ -25,9 +25,9 @@
 
     </head>
 
-    <body class="font-sans antialiased overflow-hidden">
+    <body class="font-sans antialiased overflow-hidden bg-gray-900 dark:bg-gray-900">
 
-        <div class="min-h-screen bg-gray-900 dark:bg-gray-900">
+        <div class="min-h-screen">
 
             {{-- SIDEBAR --}}
             <livewire:layout.navigation />
@@ -41,14 +41,7 @@
                 </header>
             @endif --}}
 
-            <!-- Page Content -->
-            {{-- <main>
-                {{ $slot }}
-            </main> --}}
-
             <div id="app">
-
-                {{-- @include('layouts.navbar') --}}
                 
                 <div class="main h-screen flex flex-wrap justify-end overflow-hidden">
                     

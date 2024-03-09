@@ -1,13 +1,13 @@
 <div class="sidebar hidden sm:block w-0 sm:w-1/6 h-screen fixed top-0 left-0 bottom-0 z-40 overflow-hidden">
     
-    <a href="{{ route('profile') }}" id="profileWrapper">
+    <a href="{{ route('profile') }}" id="profileWrapper" tab="profile">
 
         <img id="profileImage" src="{{ asset('images/profile/' . auth()->user()->profile_picture) }}" alt="Avatar">
         <p class="font-bold leading-none username">{{ auth()->user()->name }}</p>
     
     </a>
     
-    <div class="mb-6 pt-2">
+    <div class="mb-6 pt-4">
 
         <a href="{{ route('dashboard') }}" class="flex items-center text-gray-600 py-3 hover:text-gray-200 sidebarTab" tab="dashboard">
             <i class="fas fa-home"></i>
