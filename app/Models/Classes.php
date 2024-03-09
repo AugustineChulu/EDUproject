@@ -16,7 +16,7 @@ class Classes extends Model
         'class_description'
     ];
 
-    public function students()
+    public function pupils()
     {
         return $this->hasMany(Pupil::class,'class_id');
     }

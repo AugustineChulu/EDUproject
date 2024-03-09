@@ -8,14 +8,15 @@
     </a>
     
     <div class="mb-6 pt-2">
-        {{-- <a href="{{ route('home') }}" class="flex items-center text-gray-600 py-3 hover:text-gray-200 sidebarTab" tab="home">
+
+        <a href="{{ route('dashboard') }}" class="flex items-center text-gray-600 py-3 hover:text-gray-200 sidebarTab" tab="dashboard">
             <i class="fas fa-home"></i>
             <span class="ml-2 text-sm font-semibold">Dashboard</span>
-        </a> --}}
+        </a>
         
         @role('admin')
 
-        {{-- <a href="{{ route('teacher.index') }}" class="flex items-center text-gray-600 py-3 hover:text-gray-200 sidebarTab" tab="teacher">
+        <a href="{{ route('teacher.index') }}" class="flex items-center text-gray-600 py-3 hover:text-gray-200 sidebarTab" tab="teacher">
             <i class="fa-solid fa-chalkboard-user"></i>
             <span class="ml-2 text-sm font-semibold">Teachers</span>
         </a>
@@ -30,9 +31,9 @@
             <span class="ml-2 text-sm font-semibold">Classes</span>
         </a>
 
-        <a href="{{ route('student.index') }}" class="flex items-center text-gray-600 py-3 hover:text-gray-200 sidebarTab" tab="student">
+        <a href="{{ route('pupil.index') }}" class="flex items-center text-gray-600 py-3 hover:text-gray-200 sidebarTab" tab="pupil">
             <i class="fa-solid fa-user-graduate"></i>
-            <span class="ml-2 text-sm font-semibold">Students</span>
+            <span class="ml-2 text-sm font-semibold">Pupils</span>
         </a>
 
         <a href="{{ route('attendance.admin') }}" class="flex items-center text-gray-600 py-3 hover:text-gray-200 sidebarTab" tab="attendance">
@@ -40,7 +41,7 @@
             <span class="ml-2 text-sm font-semibold">Attendance Report</span>
         </a>
 
-        <a href="{{ route('assignrole.index') }}" class="flex items-center text-gray-600 py-3 hover:text-gray-200 sidebarTab" tab="assignrole">
+        {{-- <a href="{{ route('assignrole.index') }}" class="flex items-center text-gray-600 py-3 hover:text-gray-200 sidebarTab" tab="assignrole">
             <i class="fa-solid fa-user-pen"></i>
             <span class="ml-2 text-sm font-semibold">Assign Role</span>
         </a>

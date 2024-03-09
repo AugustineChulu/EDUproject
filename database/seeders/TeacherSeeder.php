@@ -3,11 +3,12 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\Teacher;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
-class AdminSeeder extends Seeder
+class TeacherSeeder extends Seeder
 {
     /**
      * The current password being used by the seeder.
@@ -18,15 +19,24 @@ class AdminSeeder extends Seeder
      */
     public function run(): void
     {
-
         User::create([
             
-            'name' => 'admin',
-            'email' => 'admin@gmail.com',
+            'name' => 'teacher',
+            'email' => 'teacher@gmail.com',
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('eduseedaccount'),
 
-        ])->assignRole('admin');
-    }
+        ])->assignRole('teacher');
 
+        Teacher::create([
+            'user_id'           => '2',
+            'gender'            => 'male',
+            'phone'             => '1111111111',
+            'dateofbirth'       => '2000-01-01',
+            'current_address'   => 'kabwe',
+            'permanent_address' => 'kabwe',
+            'created_at'        => now(),
+        ]);
+
+    }
 }

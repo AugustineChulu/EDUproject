@@ -9,7 +9,7 @@ class Guardian extends Model
 {
     use HasFactory;
 
-    protected $table = 'parents';
+    protected $table = 'guardians';
 
     protected $fillable = [
         'user_id',
@@ -26,7 +26,7 @@ class Guardian extends Model
 
     public function children()
     {
-        return $this->hasMany(Pupil::class, 'parent_id');
+        return $this->hasMany(Pupil::class, 'guardian_id');
     }
 
 }

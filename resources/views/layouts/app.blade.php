@@ -25,7 +25,7 @@
 
     </head>
 
-    <body class="font-sans antialiased">
+    <body class="font-sans antialiased overflow-hidden">
 
         <div class="min-h-screen bg-gray-900 dark:bg-gray-900">
 
@@ -50,15 +50,17 @@
 
                 {{-- @include('layouts.navbar') --}}
                 
-                <div class="main h-screen flex flex-wrap justify-end">
+                <div class="main h-screen flex flex-wrap justify-end overflow-hidden">
                     
                     @include('layouts.sidebar')
         
                     <div class="content w-full bg-gray-100 rounded-tl-lg sm:w-5/6">
                         
-                        <div class="w-full h-full sm:p-5">
+                        <div id="contentWrapper" class="w-full sm:p-5 overflow-auto">
         
                             <!-- Page Content -->
+                            {{-- @yield('content') --}}
+
                             <main>
                                 {{ $slot }}
                             </main>
@@ -75,18 +77,8 @@
 
     </body>
 
-    {{-- <script>
-        $(function() {
-            $( "#opennavdropdown" ).on( "click", function() {
-                $( "#navdropdown" ).toggleClass( "hidden" );
-            })
-        })
-    </script>
-
-    @stack('scripts')
-
     <script>
         var currentRoute = "{{ Route::currentRouteName() }}";
-    </script> --}}
+    </script>
 
 </html>

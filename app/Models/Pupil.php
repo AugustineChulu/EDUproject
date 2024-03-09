@@ -11,7 +11,7 @@ class Pupil extends Model
 
     protected $fillable = [
         'user_id',
-        'parent_id',
+        'guardian_id',
         'class_id',
         'roll_number',
         'gender',
@@ -26,9 +26,9 @@ class Pupil extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function parent() 
+    public function guardian() 
     {
-        return $this->belongsTo(Parent::class);
+        return $this->belongsTo(Guardian::class);
     }
 
     public function class() 

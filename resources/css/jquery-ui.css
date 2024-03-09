@@ -37611,6 +37611,10 @@ body::before{
     background-color: #1a202c;
 }
 
+#contentWrapper{
+    height: calc(100vh - 4rem);
+}
+
 #navbarTitle{
     position: relative;
     left: 50%;
@@ -37794,7 +37798,7 @@ body::before{
     align-items: center;
     border-radius: 20rem;
     margin-left: 50px;
-    padding: 0 2rem 0 60px;
+    padding: 10px 2rem 10px 60px;
 }
 
 .cardIcon{

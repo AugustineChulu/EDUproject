@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('pupils', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('parent_id');
+            $table->unsignedBigInteger('guardian_id');
             $table->unsignedBigInteger('class_id');
             $table->unsignedBigInteger('roll_number');
             $table->enum('gender', ['male', 'female', 'other']);
