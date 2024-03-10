@@ -21,7 +21,7 @@
         ])
 
     </head>
-    <body class="antialiased bg-gray-900 dark:bg-gray-900">
+    <body class="antialiased bg-green-900 dark:bg-green-900">
         <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center dark:bg-dots-lighter selection:bg-red-500 selection:text-white">
            
             <div class="max-w-7xl mx-auto p-6 lg:p-8">

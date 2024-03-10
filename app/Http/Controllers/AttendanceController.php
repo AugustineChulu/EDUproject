@@ -7,6 +7,7 @@ use App\Models\Teacher;
 use App\Models\Attendance;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreAttendanceRequest;
 use App\Http\Requests\UpdateAttendanceRequest;
 
@@ -94,7 +95,7 @@ class AttendanceController extends Controller
 
             if($type == 'class') {
                 $attendances = Attendance::whereMonth('attendence_date', $month)
-                                     ->select('attendence_date','student_id','attendence_status','class_id')
+                                     ->select('attendence_date','pupil_id','attendence_status','class_id')
                                      ->orderBy('class_id','asc')
                                      ->get()
                                      ->groupBy(['class_id','attendence_date']);
@@ -104,9 +105,19 @@ class AttendanceController extends Controller
             }
             
         }
+
         $attendances = [];
         
         return view('backend.attendance.admin', compact('attendances','months'));
+    }
+
+    public function managedByTeacher(){
+
+        $user = Auth::user();
+
+        $teacher = Teacher::with(['user','subjects','classes','pupils'])->withCount('subjects','classes')->findOrFail($user->teacher->id);
+
+        return view('backend.attendance.teacher', compact('teacher'));
     }
 
     /**
@@ -121,7 +132,7 @@ class AttendanceController extends Controller
 
     public function createByTeacher($classid)
     {
-        $class = Classes::with(['students','subjects','teacher'])->findOrFail($classid);
+        $class = Classes::with(['pupils','subjects','teacher'])->findOrFail($classid);
 
         return view('backend.attendance.create', compact('class'));
     }
