@@ -27,7 +27,7 @@ class DashboardController extends Controller
 
         } elseif ($user->hasRole('teacher')) {
 
-            $teacher = Teacher::with(['user','subjects','classes','pupil'])->withCount('subjects','classes')->findOrFail($user->teacher->id);
+            $teacher = Teacher::with(['user','subjects','classes','pupils'])->withCount('subjects','classes')->findOrFail($user->teacher->id);
 
             return view('dashboard', compact('teacher'));
 

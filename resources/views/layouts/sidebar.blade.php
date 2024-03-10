@@ -55,25 +55,25 @@
 
         @role('teacher')
 
-        <a href="{{ route('home') }}" class="flex items-center text-gray-600 py-3 hover:text-gray-200 sidebarTab" tab="home">
+        {{-- <a href="{{ route('home') }}" class="flex items-center text-gray-600 py-3 hover:text-gray-200 sidebarTab" tab="home">
             <i class="fa-solid fa-pen-clip"></i>
             <span class="ml-2 text-sm font-semibold">Lessons</span>
-        </a>
+        </a> --}}
 
-        <a href="{{ route('attendance.teacher') }}" class="flex items-center text-gray-600 py-3 hover:text-gray-200 sidebarTab" tab="attendance">
+        {{-- <a href="{{ route('attendance.teacher') }}" class="flex items-center text-gray-600 py-3 hover:text-gray-200 sidebarTab" tab="attendance">
             <i class="fa-solid fa-calendar-day"></i>
             <span class="ml-2 text-sm font-semibold">Attendance</span>
-        </a>
+        </a> --}}
 
-        <a href="{{ route('home') }}" class="flex items-center text-gray-600 py-3 hover:text-gray-200 sidebarTab">
+        {{-- <a href="{{ route('home') }}" class="flex items-center text-gray-600 py-3 hover:text-gray-200 sidebarTab">
             <i class="fa-solid fa-square-check"></i>
             <span class="ml-2 text-sm font-semibold">Grades</span>
-        </a>
+        </a> --}}
 
-        <a href="{{ route('home') }}" class="flex items-center text-gray-600 py-3 hover:text-gray-200 sidebarTab">
+        {{-- <a href="{{ route('home') }}" class="flex items-center text-gray-600 py-3 hover:text-gray-200 sidebarTab">
             <i class="fa-solid fa-table"></i>
             <span class="ml-2 text-sm font-semibold">Time Table</span>
-        </a>
+        </a> --}}
         
         @endrole
     </div>

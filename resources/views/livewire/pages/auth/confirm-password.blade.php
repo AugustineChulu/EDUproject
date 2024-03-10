@@ -41,7 +41,7 @@ new #[Layout('layouts.guest')] class extends Component
 
     <form wire:submit="confirmPassword">
         <!-- Password -->
-        <div>
+        <div class="inputWrapper">
             <x-input-label for="password" :value="__('Password')" />
 
             <x-text-input wire:model="password"
@@ -54,7 +54,7 @@ new #[Layout('layouts.guest')] class extends Component
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
-        <div class="flex justify-end mt-4">
+        <div class="flex justify-center mt-4">
             <x-primary-button>
                 {{ __('Confirm') }}
             </x-primary-button>
