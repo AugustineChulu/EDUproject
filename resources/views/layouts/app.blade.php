@@ -25,7 +25,7 @@
 
     </head>
 
-    <body class="font-sans antialiased overflow-hidden bg-gray-900 dark:bg-gray-900">
+    <body class="font-sans antialiased overflow-hidden bg-green-900 dark:bg-green-900">
 
         <div class="min-h-screen">
 

@@ -63,12 +63,12 @@ Route::middleware(['auth'])->group(function () {
 
     });
 
-//     // Route::middleware(['role:teacher'])->group(function () {
-//     //     Route::post('attendance', [AttendanceController::class, 'store'])->name('teacher.attendance.store');
-//     //     Route::get('attendance-create/{classid}', [AttendanceController::class, 'createByTeacher'])->name('teacher.attendance.create');
-//     //     Route::get('attendanceManagement', [AttendanceController::class, 'teacher'])->name('attendance.teacher');
-//     //     Route::get('lessons', [LessonsController::class, 'teacher'])->name('attendance.teacher');
-//     // });
+    Route::middleware(['role:teacher'])->group(function () {
+        Route::post('attendance', [AttendanceController::class, 'store'])->name('teacher.attendance.store');
+        Route::get('attendance-create/{classid}', [AttendanceController::class, 'createByTeacher'])->name('teacher.attendance.create');
+        Route::get('attendanceManagement', [AttendanceController::class, 'managedByTeacher'])->name('attendance.teacher');
+        // Route::get('lessons', [LessonsController::class, 'teacher'])->name('attendance.teacher');
+    });
 
 //     // Route::middleware(['role:pupil'])->group(function () {
 //     //     // No routes for students currently
