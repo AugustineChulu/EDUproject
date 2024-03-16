@@ -32,7 +32,7 @@
                     <div class="w-2/12 px-4 py-3 text-sm font-semibold text-gray-600 tracking-tight">{{ $teacher->phone }}</div>
                     <div class="w-2/12 flex items-center justify-end px-3">
 
-                        <a href="{{ route('teacher.edit', $teacher->id) }}" class="text-white ml-2 bg-blue-600 block px-2 py-1 rounded">
+                        <a href="{{ route('teacher.edit', $teacher->id) }}" class="text-gray-700 ml-2 bg-gray-400 block px-2 py-1 rounded">
                             <i class="fa-solid fa-pen"></i>
                         </a>
                         

@@ -10,10 +10,10 @@ class Classes extends Model
     use HasFactory;
 
     protected $fillable = [
-        'class_name',
-        'class_numeric',
-        'teacher_id',
-        'class_description'
+        'grade',
+        'class',
+        'class_description',
+        'teacher_id'
     ];
 
     public function pupils()

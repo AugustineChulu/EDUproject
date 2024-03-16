@@ -6,6 +6,7 @@ use App\Models\Classes;
 use App\Models\Teacher;
 use App\Models\Subject;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use App\Http\Requests\StoreClassesRequest;
 use App\Http\Requests\UpdateClassesRequest;
 
@@ -100,16 +101,24 @@ class ClassesController extends Controller
      */
     public function store(Request $request)
     {
+
         $request->validate([
-            'class_name'        => 'required|string|max:255|unique:Classes',
-            'class_numeric'     => 'required|numeric',
+            'grade'             => 'required|numeric',
+            'class'             => 'required|string|max:255',
+            'class_description' => 'required|string|max:255',
             'teacher_id'        => 'required|numeric',
-            'class_description' => 'required|string|max:255'
+            // 'grade_class_combination' => [
+            //     'required',
+            //     Rule::unique('classes')->where(function ($query) use ($request) {
+            //         return $query->where('grade', $request->grade)
+            //                      ->where('class', $request->class);
+            //     })
+            // ],
         ]);
 
         Classes::create([
-            'class_name'        => $request->class_name,
-            'class_numeric'     => $request->class_numeric,
+            'grade'             => $request->grade,
+            'class'             => $request->class,
             'teacher_id'        => $request->teacher_id,
             'class_description' => $request->class_description
         ]);

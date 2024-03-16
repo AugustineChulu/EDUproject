@@ -19,7 +19,7 @@
             'resources/js/app.js', 
             'resources/css/webfonts/all.css', 
             'resources/css/jquery-ui.css',
-            'resources/js/jquery-ui.js', 
+            // 'resources/js/jquery-ui.js', 
             'resources/js/customBehavioursJS.js'
         ])
 

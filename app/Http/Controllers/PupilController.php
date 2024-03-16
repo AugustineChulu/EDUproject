@@ -92,9 +92,9 @@ class PupilController extends Controller
     public function create()
     {
         $classes = Classes::latest()->get();
-        $guardians = Guardian::with('user')->latest()->get();
+        // $guardians = Guardian::with('user')->latest()->get();
         
-        return view('backend.pupils.create', compact('classes','guardians'));
+        return view('backend.pupils.create', compact('classes'));
     }
 
     /**
@@ -105,55 +105,130 @@ class PupilController extends Controller
      */
     public function store(Request $request)
     {
+
+        // $request->validate([
+        //     // PUPILS DETAILS //
+        //     'name'                => 'required|string|max:255',
+        //     'email'                     => 'required|string|email|max:255|unique:pupils',
+        //     'password'                  => 'required|string|min:8',
+        //     'guardian_id'               => 'required|numeric',
+        //     'class_id'                  => 'required|numeric',
+        //     'roll_number'               => [
+        //         'required',
+        //         'numeric',
+        //         Rule::unique('pupils')->where(function ($query) use ($request) {
+        //             return $query->where('class_id', $request->class_id);
+        //         })
+        //     ],
+        //     'gender'              => 'required|string',
+        //     'phone'               => 'required|string|max:255',
+        //     'dateofbirth'         => 'required|date',
+        //     'current_address'     => 'required|string|max:255',
+        //     'permanent_address'   => 'required|string|max:255',
+        
+        //     // GUARDIAN DETAILS //
+        //     'name'             => 'required|string|max:255',
+        //     'email'            => 'required|string|email|max:255|unique:guardians',
+        //     'gender'           => 'required|string',
+        //     'phone'            => 'required|string|max:255',
+        //     'current_address'  => 'required|string|max:255',
+        //     'permanent_address'=> 'required|string|max:255'
+        // ]);
+
         $request->validate([
-            'name'              => 'required|string|max:255',
-            'email'             => 'required|string|email|max:255|unique:users',
-            'password'          => 'required|string|min:8',
-            'parent_id'         => 'required|numeric',
-            'class_id'          => 'required|numeric',
-            'roll_number'       => [
+            // PUPILS DETAILS //
+            'pupil_name'                => 'required|string|max:255',
+            'pupil_email'               => 'required|string|email|max:255|unique:users,email',
+            'password'                  => 'required|string|min:8',
+            'class_id'                  => 'required|numeric',
+            'roll_number'               => [
                 'required',
                 'numeric',
-                Rule::unique('students')->where(function ($query) use ($request) {
+                Rule::unique('pupils')->where(function ($query) use ($request) {
                     return $query->where('class_id', $request->class_id);
                 })
             ],
-            'gender'            => 'required|string',
-            'phone'             => 'required|string|max:255',
-            'dateofbirth'       => 'required|date',
-            'current_address'   => 'required|string|max:255',
-            'permanent_address' => 'required|string|max:255'
+            'pupil_gender'              => 'required|string',
+            'pupil_phone'               => 'required|string|max:255',
+            'pupil_dateofbirth'         => 'required|date',
+            'pupil_current_address'     => 'required|string|max:255',
+            'pupil_permanent_address'   => 'required|string|max:255',
+        
+            // GUARDIAN DETAILS //
+            'guardian_first_name'       => 'required|string|max:255',
+            'guardian_last_name'       => 'required|string|max:255',
+            'guardian_email'            => 'required|string|email|max:255',
+            'guardian_gender'           => 'required|string',
+            'guardian_phone'            => 'required|string|max:255',
+            'guardian_current_address'  => 'required|string|max:255',
+            'guardian_permanent_address'=> 'required|string|max:255'
+        ]);
+        
+        
+        // GUARDIAN USER
+        // $guardian_user = User::create([
+        //     'name'                      => $request->guardian_name,
+        //     'email'                     => $request->guardian_email,
+        //     'password'                  => Hash::make($request->password)
+        // ]);
+
+        $guardian_user = Guardian::create([
+            'first_name'       => $request->guardian_first_name,
+            'last_name'        => $request->guardian_last_name,
+            'email'            => $request->guardian_email,
+            'gender'           => $request->guardian_gender,
+            'phone'            => $request->guardian_phone,
+            'current_address'  => $request->guardian_current_address,
+            'permanent_address'=> $request->guardian_permanent_address
+        ]);
+        
+        // $guardian_user->guardian()->create([
+        //     'gender'           => $request->guardian_gender,
+        //     'phone'            => $request->guardian_phone,
+        //     'current_address'  => $request->guardian_current_address,
+        //     'permanent_address'=> $request->guardian_permanent_address
+        // ]);
+        
+
+        
+        // PUPIL USER
+        $pupil_user = User::create([
+            'name'                      => $request->pupil_name,
+            'email'                     => $request->pupil_email,
+            'password'                  => Hash::make($request->password)
         ]);
 
-        $user = User::create([
-            'name'              => $request->name,
-            'email'             => $request->email,
-            'password'          => Hash::make($request->password)
+        $guardian = Guardian::where('email', $request->guardian_email)->first();
+        
+        $pupil_user->pupil()->create([
+            'guardian_id'               => $guardian->id,
+            'class_id'                  => $request->class_id,
+            'roll_number'               => $request->roll_number,
+            'gender'                    => $request->pupil_gender,
+            'phone'                     => $request->pupil_phone,
+            'dateofbirth'               => $request->pupil_dateofbirth,
+            'current_address'           => $request->pupil_current_address,
+            'permanent_address'         => $request->pupil_permanent_address
         ]);
+        
+        $pupil_user->assignRole('pupil');        
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+        // $guardian_user->assignRole('Parent');
+
+        // PUPIL ACCOUNT PROFILE PICTURE ////////////////////////////////////////////////////////////////////////////////////////////////////////
         if ($request->hasFile('profile_picture')) {
-            $profile = Str::slug($user->name).'-'.$user->id.'.'.$request->profile_picture->getClientOriginalExtension();
+            $profile = Str::slug($pupil_user->name).'-'.$pupil_user->id.'.'.$request->profile_picture->getClientOriginalExtension();
             $request->profile_picture->move(public_path('images/profile'), $profile);
         } else {
             $profile = 'avatar.png';
         }
-        $user->update([
+        
+        $pupil_user->update([
             'profile_picture' => $profile
         ]);
-
-        $user->student()->create([
-            'parent_id'         => $request->parent_id,
-            'class_id'          => $request->class_id,
-            'roll_number'       => $request->roll_number,
-            'gender'            => $request->gender,
-            'phone'             => $request->phone,
-            'dateofbirth'       => $request->dateofbirth,
-            'current_address'   => $request->current_address,
-            'permanent_address' => $request->permanent_address
-        ]);
-
-        $user->assignRole('pupil');
-
+        
+        
         return redirect()->route('pupil.index');
     }
 
@@ -167,7 +242,7 @@ class PupilController extends Controller
     {
         $class = Classes::with('subjects')->where('id', $pupil->class_id)->first();
         
-        return view('backend.students.show', compact('class','pupil'));
+        return view('backend.pupils.show', compact('class','pupil'));
     }
 
     /**
@@ -179,9 +254,9 @@ class PupilController extends Controller
     public function edit(Pupil $pupil)
     {
         $classes = Classes::latest()->get();
-        $guardians = Guardian::with('user')->latest()->get();
+        $guardians = Guardian::latest()->get();
 
-        return view('backend.students.edit', compact('classes','guardians','pupil'));
+        return view('backend.pupils.edit', compact('classes','pupil','guardians'));
     }
 
     /**
