@@ -13,20 +13,23 @@ class Guardian extends Model
 
     protected $fillable = [
         'user_id',
+        'first_name',
+        'last_name',
+        'email',
         'gender',
         'phone',
         'current_address',
         'permanent_address',
     ];
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
+    // public function user()
+    // {
+    //     return $this->belongsTo(User::class);
+    // }
 
-    public function children()
-    {
-        return $this->hasMany(Pupil::class, 'guardian_id');
-    }
+    // public function children()
+    // {
+    //     return $this->hasMany(Pupil::class, 'guardian_id');
+    // }
 
 }

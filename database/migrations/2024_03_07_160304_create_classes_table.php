@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('classes', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('teacher_id');
-            $table->unsignedBigInteger('class_numeric');
-            $table->string('class_name');
+            $table->unsignedBigInteger('grade');
+            $table->string('class');
             $table->string('class_description');
             $table->timestamps();
         });

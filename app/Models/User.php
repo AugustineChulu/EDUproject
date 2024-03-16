@@ -22,6 +22,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'profile_picture',
     ];
 
     /**
@@ -54,8 +55,8 @@ class User extends Authenticatable
         return $this->hasOne(Pupil::class);
     }
 
-    public function Guardian()
-    {
-        return $this->hasOne(Guardian::class);
-    }
+    // public function guardian()
+    // {
+    //     return $this->hasOne(Guardian::class);
+    // }
 }

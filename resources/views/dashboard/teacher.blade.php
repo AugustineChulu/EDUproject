@@ -30,8 +30,8 @@
                 <i class="fa-solid fa-user-graduate fa-3x"></i>
             </div>
             
-            <span class="text-5xl font-bold sm:pr-1">{{ ($teacher->students[0]->students_count) ?? 0 }}</span>
-            <span class="leading-tight">Students</span>
+            <span class="text-5xl font-bold sm:pr-1">{{ ($teacher->pupils[0]->pupils_count) ?? 0 }}</span>
+            <span class="leading-tight">Pupils</span>
 
         </div>
         
