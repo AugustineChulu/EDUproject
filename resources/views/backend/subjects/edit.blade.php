@@ -70,7 +70,7 @@
                                     <option value="{{ $teacher->id }}"
                                         {{ ($teacher->id === $subject->teacher_id) ? 'selected' : '' }}
                                     >
-                                        {{ $teacher->user->name }}
+                                        {{ $teacher->user->first_name }} {{ $teacher->user->last_name }}
                                     </option>
                                 @endforeach
                             </select>

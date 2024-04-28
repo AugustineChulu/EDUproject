@@ -11,6 +11,9 @@ class Teacher extends Model
 
     protected $fillable = [
         'user_id',
+        'nrc',
+        'ts_number',
+        'tcz_number',
         'gender',
         'phone',
         'dateofbirth',

@@ -32,7 +32,7 @@
                         </label>
                     </div>
                     <div class="md:w-2/3">
-                        <input name="name" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500" type="text" value="{{ $pupil->user->name }}">
+                        <input name="name" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500" type="text" value="{{ $pupil->user->first_name }} {{ $pupil->user->last_name }}">
                         @error('name')
                             <p class="text-red-500 text-xs italic">{{ $message }}</p>
                         @enderror
@@ -153,13 +153,13 @@
                         <div class="relative">
                             <select name="class_id" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
                                 <option value="" class="text-center">--Select Class--</option>
+                                
                                 @foreach ($classes as $class)
-                                    <option value="{{ $class->id }}"
-                                        {{ ($class->id === $pupil->class_id) ? 'selected' : '' }}
-                                    >
-                                        {{ $class->class_name }}
+                                    <option value="{{ $class->id }}" {{ ($class->id === $pupil->class_id) ? 'selected' : '' }}>
+                                        {{ $class->grade }}{{ $class->class }}
                                     </option>
                                 @endforeach
+
                             </select>
                             
                         </div>
@@ -195,7 +195,7 @@
                         </label>
                     </div>
                     <div class="md:w-2/3">
-                        <input name="profile_picture" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500" type="file">
+                        <input name="profile_picture" class="appearance-none rounded w-full py-2 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500" type="file">
                     </div>
                 </div>
 

@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\User;
+use App\Models\Teacher;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
@@ -11,8 +12,12 @@ use Livewire\Volt\Component;
 
 new #[Layout('layouts.guest')] class extends Component
 {
-    public string $name = '';
+    public string $first_name = '';
+    public string $last_name = '';
     public string $email = '';
+    public string $nrc = '';
+    public string $ts_number = '';
+    public string $tcz_number = '';
     public string $password = '';
     public string $password_confirmation = '';
 
@@ -22,28 +27,61 @@ new #[Layout('layouts.guest')] class extends Component
     public function register(): void
     {
         $validated = $this->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
+            'first_name'    => ['required', 'string', 'max:255'],
+            'last_name'     => ['required', 'string', 'max:255'],
+            'email'         => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'nrc'           => ['required', 'string', 'max:11'],
+            'ts_number'     => ['required', 'string', 'max:11'],
+            'tcz_number'    => ['required', 'string', 'max:11'],
+            'password'      => ['required', 'string', 'confirmed', Rules\Password::defaults()],
         ]);
 
         $validated['password'] = Hash::make($validated['password']);
 
-        event(new Registered($user = User::create($validated)));
+        $user = User::create([
+            'first_name'    => $validated['first_name'],
+            'last_name'     => $validated['last_name'],
+            'email'         => $validated['email'],
+            'password'      => $validated['password']
+        ]);
 
-        Auth::login($user);
+        $userOBJ = User::where('email', $validated['email'])->first();
+
+        $user = Teacher::create([
+            'user_id'       => $userOBJ->id,
+            'nrc'           => $validated['nrc'],
+            'ts_number'     => $validated['ts_number'],
+            'tcz_number'    => $validated['tcz_number'],
+        ]);
+
+        event(new Registered($userOBJ));
+
+        Auth::login($userOBJ);
 
         $this->redirect(RouteServiceProvider::HOME, navigate: true);
     }
 }; ?>
 
 <div>
+
     <form wire:submit="register">
-        <!-- Name -->
+
+        <div class="text-white text-center my-4">
+            Teacher Sign up
+        </div>
+
+        <!-- First Name -->
         <div class="inputWrapper">
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input wire:model="name" id="name" class="block mt-1 w-full" type="text" name="name" required autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+            <x-input-label for="first_name" :value="__('First Name')" />
+            <x-text-input wire:model="first_name" id="first_name" class="block mt-1 w-full" type="text" name="first_name" required autofocus autocomplete="first_name" />
+            <x-input-error :messages="$errors->get('first_name')" class="mt-2" />
+        </div>
+
+        <!-- Last Name -->
+        <div class="inputWrapper">
+            <x-input-label for="last_name" :value="__('Last Name')" />
+            <x-text-input wire:model="last_name" id="last_name" class="block mt-1 w-full" type="text" name="last_name" required autofocus autocomplete="last_name" />
+            <x-input-error :messages="$errors->get('last_name')" class="mt-2" />
         </div>
 
         <!-- Email Address -->
@@ -51,6 +89,27 @@ new #[Layout('layouts.guest')] class extends Component
             <x-input-label for="email" :value="__('Email')" />
             <x-text-input wire:model="email" id="email" class="block mt-1 w-full" type="email" name="email" required autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
+        </div>
+
+        <!-- NRC -->
+        <div class="inputWrapper">
+            <x-input-label for="nrc" :value="__('NRC')" />
+            <x-text-input wire:model="nrc" id="nrc" class="block mt-1 w-full" type="text" name="nrc" required autofocus autocomplete="nrc" />
+            <x-input-error :messages="$errors->get('nrc')" class="mt-2" />
+        </div>
+
+        <!-- TS Number -->
+        <div class="inputWrapper">
+            <x-input-label for="ts_number" :value="__('TS Number')" />
+            <x-text-input wire:model="ts_number" id="ts_number" class="block mt-1 w-full" type="text" name="ts_number" required autofocus autocomplete="ts_number" />
+            <x-input-error :messages="$errors->get('ts_number')" class="mt-2" />
+        </div>
+
+        <!-- TCZ Number -->
+        <div class="inputWrapper">
+            <x-input-label for="tcz_number" :value="__('TCZ Number')" />
+            <x-text-input wire:model="tcz_number" id="tcz_number" class="block mt-1 w-full" type="text" name="tcz_number" required autofocus autocomplete="tcz_number" />
+            <x-input-error :messages="$errors->get('tcz_number')" class="mt-2" />
         </div>
 
         <!-- Password -->
@@ -88,5 +147,7 @@ new #[Layout('layouts.guest')] class extends Component
             </a>
 
         </div>
+
     </form>
+    
 </div>

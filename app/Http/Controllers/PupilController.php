@@ -106,38 +106,10 @@ class PupilController extends Controller
     public function store(Request $request)
     {
 
-        // $request->validate([
-        //     // PUPILS DETAILS //
-        //     'name'                => 'required|string|max:255',
-        //     'email'                     => 'required|string|email|max:255|unique:pupils',
-        //     'password'                  => 'required|string|min:8',
-        //     'guardian_id'               => 'required|numeric',
-        //     'class_id'                  => 'required|numeric',
-        //     'roll_number'               => [
-        //         'required',
-        //         'numeric',
-        //         Rule::unique('pupils')->where(function ($query) use ($request) {
-        //             return $query->where('class_id', $request->class_id);
-        //         })
-        //     ],
-        //     'gender'              => 'required|string',
-        //     'phone'               => 'required|string|max:255',
-        //     'dateofbirth'         => 'required|date',
-        //     'current_address'     => 'required|string|max:255',
-        //     'permanent_address'   => 'required|string|max:255',
-        
-        //     // GUARDIAN DETAILS //
-        //     'name'             => 'required|string|max:255',
-        //     'email'            => 'required|string|email|max:255|unique:guardians',
-        //     'gender'           => 'required|string',
-        //     'phone'            => 'required|string|max:255',
-        //     'current_address'  => 'required|string|max:255',
-        //     'permanent_address'=> 'required|string|max:255'
-        // ]);
-
         $request->validate([
             // PUPILS DETAILS //
-            'pupil_name'                => 'required|string|max:255',
+            'pupil_first_name'          => 'required|string|max:255',
+            'pupil_last_name'           => 'required|string|max:255',
             'pupil_email'               => 'required|string|email|max:255|unique:users,email',
             'password'                  => 'required|string|min:8',
             'class_id'                  => 'required|numeric',
@@ -163,37 +135,21 @@ class PupilController extends Controller
             'guardian_current_address'  => 'required|string|max:255',
             'guardian_permanent_address'=> 'required|string|max:255'
         ]);
-        
-        
-        // GUARDIAN USER
-        // $guardian_user = User::create([
-        //     'name'                      => $request->guardian_name,
-        //     'email'                     => $request->guardian_email,
-        //     'password'                  => Hash::make($request->password)
-        // ]);
 
-        $guardian_user = Guardian::create([
-            'first_name'       => $request->guardian_first_name,
-            'last_name'        => $request->guardian_last_name,
-            'email'            => $request->guardian_email,
-            'gender'           => $request->guardian_gender,
-            'phone'            => $request->guardian_phone,
-            'current_address'  => $request->guardian_current_address,
-            'permanent_address'=> $request->guardian_permanent_address
+        Guardian::create([
+            'first_name'                => $request->guardian_first_name,
+            'last_name'                 => $request->guardian_last_name,
+            'email'                     => $request->guardian_email,
+            'gender'                    => $request->guardian_gender,
+            'phone'                     => $request->guardian_phone,
+            'current_address'           => $request->guardian_current_address,
+            'permanent_address'         => $request->guardian_permanent_address
         ]);
-        
-        // $guardian_user->guardian()->create([
-        //     'gender'           => $request->guardian_gender,
-        //     'phone'            => $request->guardian_phone,
-        //     'current_address'  => $request->guardian_current_address,
-        //     'permanent_address'=> $request->guardian_permanent_address
-        // ]);
-        
-
         
         // PUPIL USER
         $pupil_user = User::create([
-            'name'                      => $request->pupil_name,
+            'first_name'                => $request->pupil_first_name,
+            'last_name'                 => $request->pupil_last_name,
             'email'                     => $request->pupil_email,
             'password'                  => Hash::make($request->password)
         ]);

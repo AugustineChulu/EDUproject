@@ -43,7 +43,7 @@
                         @endforeach
                     </div>
                     
-                    <div class="w-2/12 px-4 py-3 text-sm font-semibold text-gray-600 tracking-tight">{{ $class->teacher->user->name ?? '' }}</div>
+                    <div class="w-2/12 px-4 py-3 text-sm font-semibold text-gray-600 tracking-tight">{{ $class->teacher->user->first_name ?? '' }} {{ $class->teacher->user->last_name ?? '' }}</div>
                     <div class="w-2/12 flex items-center justify-end px-3">
 
                         <a href="{{ route('classes.edit',$class->id) }}" title="Edit" class="text-gray-700 ml-2 bg-gray-400 block px-2 py-1 rounded">
