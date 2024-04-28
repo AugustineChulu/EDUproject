@@ -33,14 +33,19 @@ class DashboardController extends Controller
 
         } elseif ($user->hasRole('pupil')) {
             
-            $student = Pupil::with(['user','parent','class','attendances'])->findOrFail($user->student->id); 
+            $pupil = Pupil::with(['user','parent','class','attendances'])->findOrFail($user->student->id); 
 
-            return view('dashboard', compact('student'));
+            return view('dashboard', compact('pupil'));
 
         } else {
-            return 'NO ROLE ASSIGNED YET!';
+
+            $teacher = Teacher::with(['user'])->findOrFail($user->teacher->id);
+
+            return view('dashboard', compact('teacher'));
         }
         
     }
+
+    
 
 }

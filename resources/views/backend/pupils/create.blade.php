@@ -25,12 +25,28 @@
                 <div class="md:flex md:items-center mb-6">
                     <div class="md:w-1/3">
                         <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
-                            Name
+                            First Name
                         </label>
                     </div>
+
                     <div class="md:w-2/3">
-                        <input name="pupil_name" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500" type="text" value="{{ old('name') }}">
-                        @error('pupil_name')
+                        <input name="pupil_first_name" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500" type="text" value="{{ old('pupil_first_name') }}">
+                        @error('pupil_first_name')
+                            <p class="text-red-500 text-xs italic">{{ $message }}</p>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="md:flex md:items-center mb-6">
+                    <div class="md:w-1/3">
+                        <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
+                            Last Name
+                        </label>
+                    </div>
+                    
+                    <div class="md:w-2/3">
+                        <input name="pupil_last_name" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500" type="text" value="{{ old('pupil_last_name') }}">
+                        @error('pupil_last_name')
                             <p class="text-red-500 text-xs italic">{{ $message }}</p>
                         @enderror
                     </div>
@@ -208,7 +224,7 @@
                         </label>
                     </div>
                     <div class="md:w-2/3">
-                        <input name="profile_picture" type="file" class="appearance-none rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500">
+                        <input name="profile_picture" type="file" class="appearance-none rounded w-full py-2 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500">
                     </div>
                 </div>
 
@@ -224,7 +240,7 @@
                         </label>
                     </div>
                     <div class="md:w-2/3">
-                        <input name="guardian_first_name" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500" type="text" value="{{ old('name') }}">
+                        <input name="guardian_first_name" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500" type="text" value="{{ old('guardian_first_name') }}">
                         @error('guardian_first_name')
                             <p class="text-red-500 text-xs italic">{{ $message }}</p>
                         @enderror
@@ -238,7 +254,7 @@
                         </label>
                     </div>
                     <div class="md:w-2/3">
-                        <input name="guardian_last_name" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500" type="text" value="{{ old('name') }}">
+                        <input name="guardian_last_name" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500" type="text" value="{{ old('guardian_last_name') }}">
                         @error('guardian_last_name')
                             <p class="text-red-500 text-xs italic">{{ $message }}</p>
                         @enderror

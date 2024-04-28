@@ -37600,7 +37600,8 @@ video {
 body::before{
     content: "";
     position: absolute;
-    inset: 0;
+    height: 100%;
+    width: 100%;
     z-index: -1;
     opacity: 0.2;
     background-image: url(../images/backgroundPattern.png);
@@ -37617,20 +37618,20 @@ body::before{
 
 #navbarTitle{
     position: relative;
-    right: 45%;
-    transform: translateX(50%);
+    right: 25%;
+    /* transform: translateX(50%); */
 }
 
 .sidebarTab{
     background-color: #00000088;
-    border-top-left-radius: 1rem;
-    border-bottom-left-radius: 1rem;
-    margin: 1rem 0 0 1rem;
-    padding-left: 1.2rem;
+    border-top-left-radius: 999px;
+    border-bottom-left-radius: 999px;
+    margin: 0.5rem 0 0 1rem;
+    padding-left: 1.5rem;
 }
 
 .activeTab{
-    background-color: #f7fafc;
+    background-color: #f7fafc !important;
     color: #1a202c !important;
 }
 
@@ -37638,10 +37639,10 @@ body::before{
     grid-row: 1;
     width: 90%;
     color: #fff;
-    margin: 1rem auto 0 auto;
+    margin: 4rem auto 0 auto;
     padding: 10px 0;
     justify-self: center;
-    border-radius: 1rem;
+    border-radius: 0.6rem;
 
     display: grid;
     grid-template-columns: 1fr;
@@ -37674,12 +37675,13 @@ body::before{
 
 #profileImage{
     position: relative;
-    height: 100px;
-    width: 100px;
+    height: 75px;
+    width: 75px;
     border-radius: 50%;
     margin-bottom: 10px;
     background-color: #000;
-    border: solid 2px #EDF2F7;
+    /* border: solid 2px #339933; */
+    box-shadow: 0 0 8px 2px #00000066;
 }
 
 #userForm::before{
@@ -37732,7 +37734,7 @@ body::before{
     z-index: 0;
     background-color: #fff;
     border: none;
-    padding: 20px 10px 5px 10px;
+    padding: 10px 10px 5px 10px;
     border-radius: 0.2rem;
 
     transition: box-shadow 500ms;

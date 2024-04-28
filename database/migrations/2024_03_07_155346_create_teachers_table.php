@@ -14,11 +14,14 @@ return new class extends Migration
         Schema::create('teachers', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->enum('gender', ['male', 'female', 'other']);
-            $table->string('phone');
-            $table->date('dateofbirth');
-            $table->string('current_address');
-            $table->string('permanent_address');
+            $table->string('nrc');
+            $table->string('ts_number');
+            $table->string('tcz_number');
+            $table->enum('gender', ['male', 'female', 'other'])->nullable();
+            $table->string('phone')->nullable();
+            $table->date('dateofbirth')->nullable();
+            $table->string('current_address')->nullable();
+            $table->string('permanent_address')->nullable();
             $table->timestamps();
         });
     }

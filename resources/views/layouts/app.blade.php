@@ -25,7 +25,7 @@
 
     </head>
 
-    <body class="font-sans antialiased overflow-hidden bg-green-900 dark:bg-green-900">
+    <body data-route="{{ Route::currentRouteName() }}" class="font-sans antialiased overflow-hidden bg-green-900 dark:bg-green-900">
 
         <div class="min-h-screen">
 
@@ -67,9 +67,5 @@
         </div>
 
     </body>
-
-    <script>
-        var currentRoute = "{{ Route::currentRouteName() }}";
-    </script>
 
 </html>

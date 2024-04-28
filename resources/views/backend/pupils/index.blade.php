@@ -22,9 +22,9 @@
             </div>
             @foreach ($pupils as $pupil)
                 <div class="flex flex-wrap items-center text-gray-700 border-t-2 border-l-4 border-r-4 border-gray-300">
-                    <div class="w-3/12 px-4 py-3 text-sm font-semibold text-gray-600 tracking-tight">{{ $pupil->user->name }}</div>
+                    <div class="w-3/12 px-4 py-3 text-sm font-semibold text-gray-600 tracking-tight">{{ $pupil->user->first_name }} {{ $pupil->user->last_name }}</div>
                     <div class="w-3/12 px-4 py-3 text-sm font-semibold text-gray-600 tracking-tight">{{ $pupil->user->email }}</div>
-                    <div class="w-2/12 px-4 py-3 text-sm font-semibold text-gray-600 tracking-tight">{{ $pupil->class->class_name ?? '' }}</div>
+                    <div class="w-2/12 px-4 py-3 text-sm font-semibold text-gray-600 tracking-tight">{{ $pupil->class->grade ?? '' }}{{ $pupil->class->class ?? '' }}</div>
                     <div class="w-2/12 px-4 py-3 text-sm font-semibold text-gray-600 tracking-tight">{{ $pupil->phone }}</div>
                     <div class="w-2/12 flex items-center justify-end px-3">
 

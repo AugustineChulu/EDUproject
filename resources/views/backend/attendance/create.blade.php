@@ -36,7 +36,7 @@
                     @foreach ($class->pupils as $pupil)
                         <div class="flex items-center justify-between border border-gray-200">
                             @csrf
-                            <div class="w-4/12 text-sm text-left text-gray-600 py-2 px-4 font-semibold">{{ $pupil->user->name }}</div>
+                            <div class="w-4/12 text-sm text-left text-gray-600 py-2 px-4 font-semibold">{{ $pupil->user->first_name }} {{ $pupil->user->last_name }}</div>
                             <div class="w-3/12 text-sm text-left text-gray-600 py-2 px-4 font-semibold">{{ $pupil->roll_number }}</div>
                             <div class="w-5/12 text-sm text-right py-2 px-4 flex items-center justify-end">
                                 <label class="block text-green-500 font-semibold sm:border-r sm:pr-4">

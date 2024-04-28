@@ -22,7 +22,7 @@
             </div>
             @foreach ($teachers as $teacher)
                 <div class="flex flex-wrap items-center text-gray-700 border-t-2 border-l-4 border-r-4 border-gray-300">
-                    <div class="w-2/12 px-4 py-3 text-sm font-semibold text-gray-600 tracking-tight">{{ $teacher->user->name }}</div>
+                    <div class="w-2/12 px-4 py-3 text-sm font-semibold text-gray-600 tracking-tight">{{ $teacher->user->first_name }} {{ $teacher->user->last_name }}</div>
                     <div class="w-3/12 px-4 py-3 text-sm font-semibold text-gray-600 tracking-tight">{{ $teacher->user->email }}</div>
                     <div class="w-3/12 px-4 py-3 text-sm font-semibold text-gray-600 tracking-tight">
                         @foreach ($teacher->subjects as $subject)

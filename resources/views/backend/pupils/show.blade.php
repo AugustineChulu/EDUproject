@@ -34,7 +34,7 @@
                         </label>
                     </div>
                     <div class="md:w-2/3">
-                        <span class="block text-gray-600 font-bold">{{ $pupil->user->name }}</span>
+                        <span class="block text-gray-600 font-bold">{{ $pupil->user->first_name }} {{ $pupil->user->last_name }}</span>
                     </div>
                 </div>
                 <div class="md:flex md:items-center mb-6">
