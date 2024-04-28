@@ -11,6 +11,9 @@ class Teacher extends Model
 
     protected $fillable = [
         'user_id',
+        'nrc',
+        'ts_number',
+        'tcz_number',
         'gender',
         'phone',
         'dateofbirth',
@@ -33,9 +36,9 @@ class Teacher extends Model
         return $this->hasMany(Classes::class);
     }
 
-    public function students() 
+    public function pupils() 
     {
-        return $this->classes()->withCount('students');
+        return $this->classes()->withCount('pupils');
     }
 
 }

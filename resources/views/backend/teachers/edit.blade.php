@@ -31,7 +31,7 @@
                         </label>
                     </div>
                     <div class="md:w-2/3">
-                        <input name="name" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500" type="text" value="{{ $teacher->user->name }}">
+                        <input name="name" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500" type="text" value="{{ $teacher->user->first_name }} {{ $teacher->user->last_name }}">
                         @error('name')
                             <p class="text-red-500 text-xs italic">{{ $message }}</p>
                         @enderror

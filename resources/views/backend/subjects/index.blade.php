@@ -24,15 +24,15 @@
                 <div class="flex flex-wrap items-center text-gray-700 border-t-2 border-l-4 border-r-4 border-gray-300">
                     <div class="w-3/12 px-4 py-3 text-sm font-semibold text-gray-600 tracking-tight">{{ $subject->name }}</div>
                     <div class="w-2/12 px-4 py-3 text-sm font-semibold text-gray-600 tracking-tight">{{ $subject->subject_code }}</div>
-                    <div class="w-2/12 px-4 py-3 text-sm font-semibold text-gray-600 tracking-tight">{{ $subject->teacher->user->name }}</div>
+                    <div class="w-2/12 px-4 py-3 text-sm font-semibold text-gray-600 tracking-tight">{{ $subject->teacher->user->first_name }} {{ $subject->teacher->user->last_name }}</div>
                     <div class="w-3/12 px-4 py-3 text-sm text-gray-600 tracking-tight">{{ $subject->description }}</div>
                     <div class="w-2/12 flex items-center justify-end px-3">
 
-                        <a href="{{ route('subject.edit',$subject->id) }}" title="Edit" class="text-white ml-2 bg-blue-600 block px-2 py-1 rounded">
+                        <a href="{{ route('subject.edit',$subject->id) }}" title="Edit" class="text-gray-700 ml-2 bg-gray-400 block px-2 py-1 rounded">
                             <i class="fa-solid fa-pen"></i>
                         </a>
 
-                        <form action="{{ route('subject.destroy',$subject->id) }}" method="POST" class="inline-flex ml-1">
+                        <form action="{{ route('subject.destroy',$subject->id) }}" method="POST" class="inline-flex">
                             @csrf
                             @method('DELETE')
                             <button type="submit" title="Delete" class="deletebtn text-white ml-2 bg-red-600 block px-2 py-1 rounded" onclick="return confirm('Are you sure you want to delete?');">

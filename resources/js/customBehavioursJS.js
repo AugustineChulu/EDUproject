@@ -1,39 +1,3 @@
-// control behavior for the user input field transitions on the login page
-
-document.addEventListener('DOMContentLoaded', () => {
-
-    const userInputFields = document.querySelectorAll('input[class*="userInput"]');
-
-    const hoverlabel = (id)=>{
-
-        document.querySelector(`label[for="${id}"]`).classList.add('hover');
-    }
-
-    userInputFields.forEach(field => {
-
-        if(field.value != null || field.value != ""){
-            hoverlabel(field.id);
-        }
-
-        field.onfocus = ()=>{
-
-            document.querySelector(`label[for="${field.id}"]`).classList.add('hover');
-        }
-
-        field.onblur = ()=>{
-
-            if(field.value === ""){
-                document.querySelector(`label[for="${field.id}"]`).classList.remove('hover');
-            }
-            
-        }
-            
-    });
-
-});
-
-  console.log('running')
-
 const activateTab = (tab) =>{
 
     var selectedTab = document.querySelector(`a[tab*="${tab}"]`);
@@ -45,9 +9,49 @@ const activateTab = (tab) =>{
     }
 }
 
- document.addEventListener('DOMContentLoaded', () => {
-    
-    var firstPart = currentRoute.split('.')[0];
-    activateTab(firstPart)
+document.addEventListener('DOMContentLoaded', () => {
 
+    // control behavior for the user input field transitions on the login page
+    const userInputFields = document.querySelectorAll('input[class*="userInput"]');
+
+    const hoverlabel = (id)=>{
+
+        document.querySelector(`label[for="${id}"]`).classList.add('hover');
+    }
+
+    userInputFields.forEach(field => {
+
+        if(field.parentElement.children[0].tagName != 'DIV'){
+
+            if(!field.value == null || !field.value == ""){
+                hoverlabel(field.id);
+            }
+    
+            field.onfocus = ()=>{
+    
+                document.querySelector(`label[for="${field.id}"]`).classList.add('hover');
+            }
+    
+            field.onblur = ()=>{
+    
+                if(field.value == null || field.value == ""){
+                    document.querySelector(`label[for="${field.id}"]`).classList.remove('hover');
+                }
+                
+            }
+
+        }
+            
+    });
+    ///////////////////////////////////////////////////////////////////////////////
+
+    var currentRoute = document.body.dataset.route;
+    
+    if(currentRoute != null){
+        var firstPart = currentRoute.split('.')[0];
+        activateTab(firstPart)
+    }
+    
 });
+
+  console.log('running')

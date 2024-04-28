@@ -19,9 +19,11 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
         'email',
         'password',
+        'profile_picture',
     ];
 
     /**
@@ -54,8 +56,8 @@ class User extends Authenticatable
         return $this->hasOne(Pupil::class);
     }
 
-    public function Guardian()
-    {
-        return $this->hasOne(Guardian::class);
-    }
+    // public function guardian()
+    // {
+    //     return $this->hasOne(Guardian::class);
+    // }
 }

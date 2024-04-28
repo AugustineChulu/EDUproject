@@ -14,6 +14,7 @@
         </div>
         
         <div class="table w-full mt-8 bg-white rounded">
+
             <form action="{{ route('teacher.store') }}" method="POST" class="w-full max-w-xl px-6 py-12" enctype="multipart/form-data">
                 @csrf
                 <div class="md:flex md:items-center mb-6">
@@ -55,6 +56,7 @@
                         @enderror
                     </div>
                 </div>
+                
                 <div class="md:flex md:items-center mb-6">
                     <div class="md:w-1/3">
                         <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
@@ -95,6 +97,7 @@
                         @enderror
                     </div>
                 </div>
+
                 <div class="md:flex md:items-center mb-6">
                     <div class="md:w-1/3">
                         <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
@@ -108,6 +111,7 @@
                         @enderror
                     </div>
                 </div>
+                
                 <div class="md:flex md:items-center mb-6">
                     <div class="md:w-1/3">
                         <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
@@ -121,6 +125,7 @@
                         @enderror
                     </div>
                 </div>
+                
                 <div class="md:flex md:items-center mb-6">
                     <div class="md:w-1/3">
                         <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
@@ -134,6 +139,7 @@
                         @enderror
                     </div>
                 </div>
+
                 <div class="md:flex md:items-center mb-6">
                     <div class="md:w-1/3">
                         <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4">
@@ -141,11 +147,11 @@
                         </label>
                     </div>
                     <div class="md:w-2/3">
-                        <input name="profile_picture" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500" type="file">
+                        <input name="profile_picture" type="file" class="appearance-none rounded w-full text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500">
                     </div>
                 </div>
 
-                <div class="md:flex md:items-center">
+                <div class="md:flex md:items-center mt-16">
                     <div class="md:w-1/3"></div>
                     <div class="md:w-2/3">
                         <button class="shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
@@ -153,7 +159,8 @@
                         </button>
                     </div>
                 </div>
-            </form>        
+            </form> 
+
         </div>
         
     </div>

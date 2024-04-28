@@ -56,14 +56,14 @@
                 <div class="w-1/4 text-left text-white py-2 px-4 font-semibold">Name</div>
                 <div class="w-1/4 text-left text-white py-2 px-4 font-semibold">Email</div>
                 <div class="w-1/4 text-right text-white py-2 px-4 font-semibold">Phone</div>
-                <div class="w-1/4 text-right text-white py-2 px-4 font-semibold">Parent</div>
+                <div class="w-1/4 text-right text-white py-2 px-4 font-semibold">Guardian</div>
             </div>
             @foreach ($assigned->pupils as $pupil)
                 <div class="flex items-center justify-between border border-gray-200 mb-px">
-                    <div class="w-1/4 text-left text-gray-600 py-2 px-4 font-medium">{{ $pupil->user->name }}</div>
+                    <div class="w-1/4 text-left text-gray-600 py-2 px-4 font-medium">{{ $pupil->user->first_name }} {{ $pupil->user->last_name }}</div>
                     <div class="w-1/4 text-left text-gray-600 py-2 px-4 font-medium">{{ $pupil->user->email }}</div>
                     <div class="w-1/4 text-right text-gray-600 py-2 px-4 font-medium">{{ $pupil->phone }}</div>
-                    <div class="w-1/4 text-right text-gray-600 py-2 px-4 font-medium">{{ $pupil->parent->user->name }}</div>
+                    <div class="w-1/4 text-right text-gray-600 py-2 px-4 font-medium">{{ $pupil->guardian->first_name }} {{ $pupil->guardian->last_name }}</div>
                 </div>
             @endforeach
         </div>

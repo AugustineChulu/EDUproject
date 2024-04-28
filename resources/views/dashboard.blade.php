@@ -16,15 +16,26 @@
     </div> --}}
 
     @role('admin')
+
         @include('dashboard.admin')
-    @endrole
+    @elserole('teacher')
 
-    @role('teacher')
         @include('dashboard.teacher')
-    @endrole
+    @elserole('pupil')
 
-    @role('pupil')
-        @include('dashboard.student')
+        @include('dashboard.pupil')
+    @else
+        
+        <div class="py-12">
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                    <div class="p-6 text-gray-900 dark:text-gray-100">
+                        {{ __("You're logged in, head to the profile section to complete your account setup!") }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
     @endrole
     
 </x-app-layout>
